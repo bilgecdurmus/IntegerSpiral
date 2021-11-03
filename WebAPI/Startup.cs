@@ -23,7 +23,13 @@ namespace WebAPI
             services.AddControllers();
             services.AddSingleton<ILayoutService,LayoutManager>();
             services.AddSingleton<ILayoutRepository, LayoutRepository>();
-            services.AddSwaggerDocument();
+            services.AddSwaggerDocument(config=> {
+                config.PostProcess = (doc => {
+                    doc.Info.Title = "Integer Spiral API";
+                    doc.Info.Version = "1.0.1";
+                });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -20,22 +20,55 @@ namespace WebAPI.Controllers
             _layoutservice = layoutService;
         }
 
+        /// <summary>
+        /// Get All Layouts
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public List<Layout> GetLayouts()
+        [Route("[action]")]
+        public async Task<IActionResult> GetLayouts()
         {
-            return _layoutservice.GetLayouts();
+            var layouts = await _layoutservice.GetLayouts();
+            return Ok(layouts); // 200 + data
         } 
-
-        [HttpGet("{id,x,y}")]
-        public int GetValueOfLayout(int id,int X,int Y)
+        /// <summary>
+        /// Get Value Of [X,Y] Coordinate
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("[action]/{id,x,y}")]
+        public async Task<IActionResult> GetValueOfLayout([FromQuery]int id, [FromQuery] int X, [FromQuery] int Y)
         {
-            return _layoutservice.GetValueOfLayout(id,X,Y);
+            if (id >=0 && X >= 0 && Y >= 0 )
+            {
+            var layout = await _layoutservice.GetValueOfLayout(id, X, Y);
+            if (layout != null)
+            {
+                return Ok(layout); // 200 + data
+            }
+            return NotFound(); // 404
+            }
+            return BadRequest(); // 400
         }
-
-        [HttpPost("{x,y}")]
-        public int CreateLayout(int X , int Y)
+        /// <summary>
+        /// Create Layout
+        /// </summary>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("[action]/{x,y}")]
+        public async Task<IActionResult> CreateLayout([FromQuery] int X , [FromQuery] int Y)
         {
-            return _layoutservice.CreateLayout(X,Y);
+            if (X >= 0 && Y >= 0)
+            {
+                    var layout = await _layoutservice.CreateLayout(X, Y);
+                    return Ok(layout); // 200 + data 
+            }
+            return BadRequest(); //400
         }
     }
 }

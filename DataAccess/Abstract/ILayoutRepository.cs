@@ -9,8 +9,8 @@ namespace DataAccess.Abstract
 {
     public interface ILayoutRepository
     {
-        List<Layout> GetLayouts();
-        int GetValueOfLayout(int id, int X, int Y);
-        int CreateLayout(int X, int Y);
+        Task<List<Layout>> GetLayouts();
+        Task<int> GetValueOfLayout(int id, int X, int Y);
+        Task<int> CreateLayout(int X, int Y);
     }
 }

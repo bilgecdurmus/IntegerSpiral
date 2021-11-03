@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:WebAPI.Controllers.LayoutsController.GetLayouts">
+            <summary>
+            Get All Layouts
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.LayoutsController.GetValueOfLayout(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get Value Of [X,Y] Coordinate
+            </summary>
+            <param name="id"></param>
+            <param name="X"></param>
+            <param name="Y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WebAPI.Controllers.LayoutsController.CreateLayout(System.Int32,System.Int32)">
+            <summary>
+            Create Layout
+            </summary>
+            <param name="X"></param>
+            <param name="Y"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
