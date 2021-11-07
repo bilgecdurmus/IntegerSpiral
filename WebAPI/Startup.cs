@@ -35,11 +35,7 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
+            
             app.UseRouting();
             app.UseOpenApi();
             app.UseSwaggerUi3();
@@ -47,6 +43,7 @@ namespace WebAPI
             {
                 endpoints.MapControllers();
             });
+            
         }
     }
 }

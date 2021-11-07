@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
         [Route("[action]/{id,x,y}")]
         public async Task<IActionResult> GetValueOfLayout([FromQuery]int id, [FromQuery] int X, [FromQuery] int Y)
         {
-            if (id >=0 && X >= 0 && Y >= 0 )
+            if (id >0 && X > 0 && Y > 0 )
             {
             var layout = await _layoutservice.GetValueOfLayout(id, X, Y);
             if (layout != null)
@@ -63,7 +63,7 @@ namespace WebAPI.Controllers
         [Route("[action]/{x,y}")]
         public async Task<IActionResult> CreateLayout([FromQuery] int X , [FromQuery] int Y)
         {
-            if (X >= 0 && Y >= 0)
+            if (X > 0 && Y > 0)
             {
                     var layout = await _layoutservice.CreateLayout(X, Y);
                     return Ok(layout); // 200 + data 
